@@ -12,7 +12,7 @@ local config = {
   severity_sort = true,
   virtual_lines = { current_line = true },
   float = {
-    focusable = false,
+    focusable = true,
     style  = "minimal",
     border = "single",
     source = "always",
@@ -179,3 +179,22 @@ vim.g.rustaceanvim = {
   },
 }
 
+vim.lsp.config['gopls'] = {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_markers = { "go.work", "go.mod", ".git" },
+    settings = {
+        gopls = {
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
+        },
+    },
+}
+vim.lsp.enable('gopls')

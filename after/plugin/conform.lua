@@ -4,6 +4,7 @@ require("conform").setup({
         -- python = { "isort", "black" },
         -- Use a sub-list to run only the first available formatter
         -- javascript = { { "prettierd", "prettier" } },
+        go = { "gofmt" },
     },
     notify_on_error = false,
     format_on_save = function(bufnr)

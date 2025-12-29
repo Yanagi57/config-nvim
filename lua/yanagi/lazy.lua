@@ -69,7 +69,7 @@ require("lazy").setup({
 		event = { 'LspAttach' },
 		version = '1.*',
 	},
-	{ 'github/copilot.vim' },
+	-- { 'github/copilot.vim' },
 	{
 		"mfussenegger/nvim-lint",
 		event = { "BufReadPre", "BufNewFile" },

@@ -186,22 +186,18 @@ vim.g.rustaceanvim = {
   },
 }
 
-vim.lsp.config['gopls'] = {
-    cmd = { "gopls" },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_markers = { "go.work", "go.mod", ".git" },
+vim.lsp.config['pyright'] = {
+    cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { "python" },
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
     settings = {
-        gopls = {
-            hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-            },
-        },
+        python = {
+            analysis = {
+                typeCheckingMode = "basic",
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+            }
+        }
     },
 }
-vim.lsp.enable('gopls')
+vim.lsp.enable('pyright')

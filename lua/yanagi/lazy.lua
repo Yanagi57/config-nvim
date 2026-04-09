@@ -24,7 +24,13 @@ require("lazy").setup({
 	{
 		"ibhagwan/fzf-lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {}
+		opts = {
+			previewers = {
+				builtin = {
+					treesitter = { enabled = false },
+				},
+			},
+		},
 	},
 	-- Theme
 	-- { "rmehri01/onenord.nvim" },

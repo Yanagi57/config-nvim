@@ -45,7 +45,7 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				ensure_installed = { "rust", "c", "lua", "markdown", "markdown_inline" },
 				sync_install = false,
 				auto_install = true,

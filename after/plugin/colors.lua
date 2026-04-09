@@ -57,6 +57,53 @@
 -- -- setup must be called before loading
 -- vim.cmd("colorscheme carbonfox")
 
------------------------------ Everforest -------------------------------------
-vim.g.everforest_enable_italic = true
-vim.cmd.colorscheme('everforest')
+----------------------------- Black & Gold (Monokai Machine fork) -------------
+-- Monokai Machine palette mapping:
+--   accent1 = red    (#ff6d7e) → keep as error
+--   accent2 = orange (#ffb270) → keep as warning
+--   accent3 = yellow (#ffed72) → gold  (keywords)
+--   accent4 = green  (#a2e57b) → teal  (strings, git add)
+--   accent5 = cyan   (#7cd5f1) → teal dim (types, info)
+--   accent6 = purple (#baa0f8) → gold  (functions — eliminates all purple)
+require("monokai-pro").setup({
+	filter = "machine",
+	override_palette = function(palette)
+		-- Backgrounds
+		palette.background = "#222222"
+		palette.dark1      = "#2A2A2A"
+		palette.dark2      = "#333333"
+		-- Text
+		palette.text       = "#F5F5F5"
+		-- Swap purple/green/cyan to gold/teal
+		palette.accent3    = "#FFD700" -- yellow → gold  (keywords)
+		palette.accent4    = "#4DD9C0" -- green  → teal  (strings)
+		palette.accent5    = "#2AA38E" -- cyan   → teal dim (types/builtins)
+		palette.accent6    = "#FFD700" -- purple → gold  (functions)
+		-- Grayscale
+		palette.dimmed1    = "#BBBBBB"
+		palette.dimmed2    = "#999999"
+		palette.dimmed3    = "#777777"
+		palette.dimmed4    = "#555555"
+		palette.dimmed5    = "#3D3D3D"
+	end,
+	override = function(c)
+		return {
+			-- Types and classes → primary text, not teal
+			["@type"]               = { fg = "#F5F5F5" },
+			["@type.builtin"]       = { fg = "#F5F5F5" },
+			["@lsp.type.type"]      = { fg = "#F5F5F5" },
+			["@lsp.type.class"]     = { fg = "#F5F5F5" },
+			["@lsp.type.interface"] = { fg = "#F5F5F5" },
+			["@lsp.type.struct"]    = { fg = "#F5F5F5" },
+			-- Parameters → secondary
+			["@variable.parameter"] = { fg = "#BBBBBB" },
+			["@lsp.type.parameter"] = { fg = "#BBBBBB" },
+			-- Variables → primary
+			["@variable"]           = { fg = "#F5F5F5" },
+			-- Operators → secondary
+			["@operator"]           = { fg = "#BBBBBB" },
+			Operator                = { fg = "#BBBBBB" },
+		}
+	end,
+})
+vim.cmd.colorscheme("monokai-pro")

@@ -41,7 +41,22 @@ require("lazy").setup({
 	{ "loctvl842/monokai-pro.nvim", priority = 1000 },
 	{ "nvim-lualine/lualine.nvim",       dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font } },
 	{ "stevearc/oil.nvim",               dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font } },
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = { "rust", "c", "lua", "markdown", "markdown_inline" },
+				sync_install = false,
+				auto_install = true,
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				indent = { enable = true },
+			})
+		end,
+	},
 	{ "mbbill/undotree" },
 	{
 		"folke/which-key.nvim",

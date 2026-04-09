@@ -67,24 +67,26 @@
 --   accent6 = purple (#baa0f8) → gold  (functions — eliminates all purple)
 require("monokai-pro").setup({
 	filter = "machine",
-	override_palette = function(palette)
-		-- Backgrounds
-		palette.background = "#222222"
-		palette.dark1      = "#2A2A2A"
-		palette.dark2      = "#333333"
-		-- Text
-		palette.text       = "#F5F5F5"
-		-- Swap purple/green/cyan to gold/teal
-		palette.accent3    = "#FFD700" -- yellow → gold  (keywords)
-		palette.accent4    = "#4DD9C0" -- green  → teal  (strings)
-		palette.accent5    = "#2AA38E" -- cyan   → teal dim (types/builtins)
-		palette.accent6    = "#FFD700" -- purple → gold  (functions)
-		-- Grayscale
-		palette.dimmed1    = "#BBBBBB"
-		palette.dimmed2    = "#999999"
-		palette.dimmed3    = "#777777"
-		palette.dimmed4    = "#555555"
-		palette.dimmed5    = "#3D3D3D"
+	override_palette = function(_filter)
+		return {
+			-- Backgrounds
+			background = "#222222",
+			dark1      = "#2A2A2A",
+			dark2      = "#333333",
+			-- Text
+			text       = "#F5F5F5",
+			-- Swap purple/green/cyan to gold/teal
+			accent3    = "#FFD700", -- yellow → gold  (keywords)
+			accent4    = "#4DD9C0", -- green  → teal  (strings)
+			accent5    = "#2AA38E", -- cyan   → teal dim (types/builtins)
+			accent6    = "#FFD700", -- purple → gold  (functions)
+			-- Grayscale
+			dimmed1    = "#BBBBBB",
+			dimmed2    = "#999999",
+			dimmed3    = "#777777",
+			dimmed4    = "#555555",
+			dimmed5    = "#3D3D3D",
+		}
 	end,
 	override = function(c)
 		return {

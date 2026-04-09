@@ -57,54 +57,13 @@
 -- -- setup must be called before loading
 -- vim.cmd("colorscheme carbonfox")
 
------------------------------ Black & Gold (Monokai Machine fork) -------------
--- Monokai Machine palette mapping:
---   accent1 = red    (#ff6d7e) → keep as error
---   accent2 = orange (#ffb270) → keep as warning
---   accent3 = yellow (#ffed72) → gold  (keywords)
---   accent4 = green  (#a2e57b) → teal  (strings, git add)
---   accent5 = cyan   (#7cd5f1) → teal dim (types, info)
---   accent6 = purple (#baa0f8) → gold  (functions — eliminates all purple)
+----------------------------- Black & Gold (Monokai Machine) ------------------
+-- Only swap accent6 (purple #baa0f8) → gold, everything else stays as-is
 require("monokai-pro").setup({
 	filter = "machine",
 	override_palette = function(_filter)
 		return {
-			-- Backgrounds
-			background = "#222222",
-			dark1      = "#2A2A2A",
-			dark2      = "#333333",
-			-- Text
-			text       = "#F5F5F5",
-			-- Swap purple/green/cyan to gold/teal
-			accent3    = "#FFD700", -- yellow → gold  (keywords)
-			accent4    = "#4DD9C0", -- green  → teal  (strings)
-			accent5    = "#2AA38E", -- cyan   → teal dim (types/builtins)
-			accent6    = "#FFD700", -- purple → gold  (functions)
-			-- Grayscale
-			dimmed1    = "#BBBBBB",
-			dimmed2    = "#999999",
-			dimmed3    = "#777777",
-			dimmed4    = "#555555",
-			dimmed5    = "#3D3D3D",
-		}
-	end,
-	override = function(c)
-		return {
-			-- Types and classes → primary text, not teal
-			["@type"]               = { fg = "#F5F5F5" },
-			["@type.builtin"]       = { fg = "#F5F5F5" },
-			["@lsp.type.type"]      = { fg = "#F5F5F5" },
-			["@lsp.type.class"]     = { fg = "#F5F5F5" },
-			["@lsp.type.interface"] = { fg = "#F5F5F5" },
-			["@lsp.type.struct"]    = { fg = "#F5F5F5" },
-			-- Parameters → secondary
-			["@variable.parameter"] = { fg = "#BBBBBB" },
-			["@lsp.type.parameter"] = { fg = "#BBBBBB" },
-			-- Variables → primary
-			["@variable"]           = { fg = "#F5F5F5" },
-			-- Operators → secondary
-			["@operator"]           = { fg = "#BBBBBB" },
-			Operator                = { fg = "#BBBBBB" },
+			accent6 = "#FFD700", -- purple → gold
 		}
 	end,
 })

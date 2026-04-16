@@ -168,7 +168,7 @@ vim.g.rustaceanvim = {
           end,
           { silent = true, buffer = bufnr }
       )
-      vim.lsp.inlay_hint.enable(true, { buffer = bufnr })
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end,
     default_settings = {
       -- rust-analyzer language server configuration

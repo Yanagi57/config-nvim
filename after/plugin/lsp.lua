@@ -201,3 +201,24 @@ vim.lsp.config['pyright'] = {
     },
 }
 vim.lsp.enable('pyright')
+
+
+vim.lsp.config['clangd'] = {
+    filetypes = { "c" },
+    cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=iwyu",
+    "--completion-style=detailed",
+    "--function-arg-placeholders",
+    "--fallback-style=llvm"
+  },
+  init_options = {
+    usePlaceholders = true,
+    completeUnimported = true,
+    clangdFileStatus = true,
+  },
+}
+
+vim.lsp.enable('clangd')

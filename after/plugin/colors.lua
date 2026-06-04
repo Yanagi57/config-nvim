@@ -59,12 +59,20 @@
 
 ----------------------------- Black & Gold (Monokai Machine) ------------------
 -- Only swap accent6 (purple #baa0f8) → gold, everything else stays as-is
-require("monokai-pro").setup({
-	filter = "machine",
-	override_palette = function(_filter)
-		return {
-			accent6 = "#FFD700", -- purple → gold
-		}
-	end,
+-- require("monokai-pro").setup({
+-- 	filter = "machine",
+-- 	override_palette = function(_filter)
+-- 		return {
+-- 			accent6 = "#FFD700", -- purple → gold
+-- 		}
+-- 	end,
+-- })
+-- vim.cmd.colorscheme("monokai-pro")
+--
+require('ayu').setup({
+    mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+    terminal = true, -- Set to `false` to let terminal manage its own colors.
+    overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
 })
-vim.cmd.colorscheme("monokai-pro")
+
+require('ayu').colorscheme()

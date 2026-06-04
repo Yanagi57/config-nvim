@@ -131,7 +131,7 @@ vim.g.rustaceanvim = {
   server = {
     on_attach = function(client, bufnr)
       vim.keymap.set(
-          "n", "<leader>ca", 
+          "n", "<leader>ca",
           function()
               vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
               -- or vim.lsp.buf.codeAction() if you don't want grouping.
@@ -204,7 +204,7 @@ vim.lsp.enable('pyright')
 
 
 vim.lsp.config['clangd'] = {
-    filetypes = { "c" },
+    filetypes = { "c", "cpp" },
     cmd = {
     "clangd",
     "--background-index",

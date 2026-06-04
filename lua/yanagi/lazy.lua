@@ -38,6 +38,7 @@ require("lazy").setup({
 	-- { "EdenEast/nightfox.nvim" },
 	-- { "navarasu/onedark.nvim" },
 	-- { "sainnhe/everforest" },
+    { "Shatur/neovim-ayu" },
 	{ "loctvl842/monokai-pro.nvim", priority = 1000 },
 	{ "nvim-lualine/lualine.nvim",       dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font } },
 	{ "stevearc/oil.nvim",               dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font } },

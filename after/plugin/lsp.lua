@@ -10,7 +10,15 @@ local config = {
   update_in_insert = true,
   underline = true,
   severity_sort = true,
-  virtual_lines = { current_line = true },
+  virtual_lines = {
+    current_line = true,
+    format = function(d)
+      if d.severity == vim.diagnostic.severity.ERROR then
+        return "🐼 " .. d.message
+      end
+      return d.message
+    end,
+  },
   float = {
     focusable = true,
     style  = "minimal",

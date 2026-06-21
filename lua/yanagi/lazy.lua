@@ -37,8 +37,18 @@ require("lazy").setup({
 	-- { "AlexvZyl/nordic.nvim" },
 	-- { "EdenEast/nightfox.nvim" },
 	-- { "navarasu/onedark.nvim" },
-	-- { "sainnhe/everforest" },
-    { "Shatur/neovim-ayu" },
+    {
+      'sainnhe/everforest',
+      lazy = false,
+      priority = 1000,
+      config = function()
+        -- Optionally configure and load the colorscheme
+        -- directly inside the plugin declaration.
+        vim.g.everforest_enable_italic = true
+        vim.cmd.colorscheme('everforest')
+      end
+    },
+    -- { "Shatur/neovim-ayu" },
 	{ "loctvl842/monokai-pro.nvim", priority = 1000 },
 	{ "nvim-lualine/lualine.nvim",       dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font } },
 	{ "stevearc/oil.nvim",               dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font } },

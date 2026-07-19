@@ -49,7 +49,7 @@ require("lazy").setup({
       end
     },
     -- { "Shatur/neovim-ayu" },
-	{ "loctvl842/monokai-pro.nvim", priority = 1000 },
+	-- { "loctvl842/monokai-pro.nvim", priority = 1000 },
 	{ "nvim-lualine/lualine.nvim",       dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font } },
 	{ "stevearc/oil.nvim",               dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font } },
 	{
@@ -130,7 +130,7 @@ require("lazy").setup({
 	},
 	{
 		'mrcjkb/rustaceanvim',
-		version = '^6', -- Recommended
+		version = '^9',
 		lazy = false, -- This plugin is already lazy
 	},
 	{

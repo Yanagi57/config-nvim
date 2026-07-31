@@ -210,6 +210,81 @@ vim.lsp.config['pyright'] = {
 }
 vim.lsp.enable('pyright')
 
+vim.lsp.config['gopls'] = {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_markers = { "go.work", "go.mod", ".git" },
+    settings = {
+        gopls = {
+            gofumpt = true,
+            codelenses = {
+                gc_details = false,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                test = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
+            },
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
+            analyses = {
+                fieldalignment = true,
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+                shadow = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
+            directoryFilters = { "-.git", "-node_modules" },
+            semanticTokens = true,
+        },
+    },
+}
+vim.lsp.enable('gopls')
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("gopls-inlay-hints", { clear = true }),
+    callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client and client.name == "gopls" then
+            vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("go-organize-imports", { clear = true }),
+    pattern = "*.go",
+    callback = function()
+        local params = vim.lsp.util.make_range_params()
+        params.context = { only = { "source.organizeImports" } }
+        -- default timeout 1000ms; bump 3rd arg if imports don't stick on first write
+        local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+        for cid, res in pairs(result or {}) do
+            for _, r in pairs(res.result or {}) do
+                if r.edit then
+                    local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+                    vim.lsp.util.apply_workspace_edit(r.edit, enc)
+                end
+            end
+        end
+        vim.lsp.buf.format({ async = false })
+    end,
+})
+
+
 
 vim.lsp.config['clangd'] = {
     filetypes = { "c", "cpp" },

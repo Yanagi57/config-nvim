@@ -212,7 +212,7 @@ vim.lsp.enable('pyright')
 
 vim.lsp.config['gopls'] = {
     cmd = { "gopls" },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    filetypes = { "go", "gomod", "gowork" },
     root_markers = { "go.work", "go.mod", ".git" },
     settings = {
         gopls = {
